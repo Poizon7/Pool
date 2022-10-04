@@ -30,4 +30,4 @@ class PlayerBall(Ball):
       GAME_FONT.render_to(self.screen, mouse + pygame.Vector2(20, 0), str(pygame.Vector2(self.pos - mouse).length().__round__()), Color.white)
   def Shoot(self):
     if self.vel.length() == 0:
-      self.vel = pygame.Vector2(self.pos - pygame.mouse.get_pos()) / 150
+      self.vel = pygame.Vector2(self.pos - pygame.mouse.get_pos()) / 100
