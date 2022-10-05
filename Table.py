@@ -83,7 +83,7 @@ class Table:
         if self.balls[i].pos.distance_to(self.balls[j].pos) < self.balls[i].rad * 2:
           totVel = self.balls[i].vel + self.balls[j].vel
           dist = self.balls[i].pos - self.balls[j].pos
-          dist.scale_to_length(totVel.length())
+          dist.scale_to_length(totVel.length() * 0.5)
           self.balls[i].vel = self.balls[i].vel + dist
           self.balls[j].vel = self.balls[j].vel + dist * -1
           if self.balls[i].vel.length() > 0:
