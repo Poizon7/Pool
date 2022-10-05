@@ -15,7 +15,7 @@ class Ball:
 
   def Move(self):
     if self.vel.length() > 0:
-      length = self.vel.length() - 0.001
+      length = self.vel.length() - 0.002
       if length < 0:
         length = 0
       self.vel.scale_to_length(length)
@@ -30,4 +30,4 @@ class PlayerBall(Ball):
       GAME_FONT.render_to(self.screen, mouse + pygame.Vector2(20, 0), str(pygame.Vector2(self.pos - mouse).length().__round__()), Color.white)
   def Shoot(self):
     if self.vel.length() == 0:
-      self.vel = pygame.Vector2(self.pos - pygame.mouse.get_pos()) / 100
+      self.vel = pygame.Vector2(self.pos - pygame.mouse.get_pos()) / 150

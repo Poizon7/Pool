@@ -5,25 +5,26 @@ import Color
 
 class Table:
   def __init__(self, size, color, screen):
-    sizeFactor = 500
-    self.size = width, height = size[0] - sizeFactor, size[1] - sizeFactor
+    sizeFactor = 700
+    self.screenSize = size
+    self.size = width, height = 600, 250
     self.screen = screen
-    self.pos = x, y = sizeFactor / 2, sizeFactor / 2
+    self.pos = x, y = (size[0] - width) / 2, (size[1] - height) / 2
     numOfBalls = 1
     self.balls = [
-      Ball.Ball(pygame.Vector2(sizeFactor + 100, self.size[1] / 2 + self.pos[1]), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 30, self.size[1] / 2 + self.pos[1] + 15), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 30, self.size[1] / 2 + self.pos[1] - 15), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 60, self.size[1] / 2 + self.pos[1]), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 60, self.size[1] / 2 + self.pos[1] + 30), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 60, self.size[1] / 2 + self.pos[1] - 30), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 90, self.size[1] / 2 + self.pos[1] + 15), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 90, self.size[1] / 2 + self.pos[1] - 15), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 90, self.size[1] / 2 + self.pos[1] + 45), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(sizeFactor + 100 + 90, self.size[1] / 2 + self.pos[1] - 45), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100, self.size[1] / 2 + self.pos[1]), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 30, self.size[1] / 2 + self.pos[1] + 15), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 30, self.size[1] / 2 + self.pos[1] - 15), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 60, self.size[1] / 2 + self.pos[1]), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 60, self.size[1] / 2 + self.pos[1] + 30), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 60, self.size[1] / 2 + self.pos[1] - 30), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 90, self.size[1] / 2 + self.pos[1] + 15), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 90, self.size[1] / 2 + self.pos[1] - 15), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 90, self.size[1] / 2 + self.pos[1] + 45), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 90, self.size[1] / 2 + self.pos[1] - 45), 10, Color.orange, screen),
     ]
 
-    self.balls.append(Ball.PlayerBall(pygame.Vector2(sizeFactor - 100, self.size[1] / 2 + self.pos[1]), 10, Color.white, screen))
+    self.balls.append(Ball.PlayerBall(pygame.Vector2(size[0] / 2 - 100, self.size[1] / 2 + self.pos[1]), 10, Color.white, screen))
 
   def Draw(self):
     pygame.draw.rect(self.screen, Color.brown, ((self.pos[0] - 20, self.pos[1] - 20), (self.size[0] + 40, self.size[1] + 40)))
@@ -58,7 +59,7 @@ class Table:
 
   def RemoveBall(self, ball):
     if ball.color == Color.white:
-      ball.pos = pygame.Vector2(400, self.size[1] / 2 + self.pos[1])
+      ball.pos = pygame.Vector2(self.screenSize[0] / 2 - 100, self.size[1] / 2 + self.pos[1])
       ball.vel = pygame.Vector2(0, 0)
     else:
       self.balls.remove(ball)
