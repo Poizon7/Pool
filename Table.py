@@ -5,26 +5,39 @@ import Color
 
 class Table:
   def __init__(self, size, color, screen):
-    sizeFactor = 700
     self.screenSize = size
     self.size = width, height = 600, 250
     self.screen = screen
     self.pos = x, y = (size[0] - width) / 2, (size[1] - height) / 2
-    numOfBalls = 1
+
+    middleOfScreenX = size[0] / 2
+    middleOfScreenY = size[1] / 2
+    ballOffsetX = 100
+    ballOffsetFactorX = 20
+    ballOffsetFactorY = 10
     self.balls = [
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100, self.size[1] / 2 + self.pos[1]), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 30, self.size[1] / 2 + self.pos[1] + 15), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 30, self.size[1] / 2 + self.pos[1] - 15), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 60, self.size[1] / 2 + self.pos[1]), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 60, self.size[1] / 2 + self.pos[1] + 30), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 60, self.size[1] / 2 + self.pos[1] - 30), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 90, self.size[1] / 2 + self.pos[1] + 15), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 90, self.size[1] / 2 + self.pos[1] - 15), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 90, self.size[1] / 2 + self.pos[1] + 45), 10, Color.orange, screen),
-      Ball.Ball(pygame.Vector2(size[0] / 2 + 100 + 90, self.size[1] / 2 + self.pos[1] - 45), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX, middleOfScreenY), 10, Color.orange, screen),
+
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + ballOffsetFactorX, middleOfScreenY + ballOffsetFactorY), 10, Color.red, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + ballOffsetFactorX, middleOfScreenY - ballOffsetFactorY), 10, Color.red, screen),
+
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 2 * ballOffsetFactorX, middleOfScreenY), 10, Color.black, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 2 * ballOffsetFactorX, middleOfScreenY + 2 * ballOffsetFactorY), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 2 * ballOffsetFactorX, middleOfScreenY - 2 * ballOffsetFactorY), 10, Color.red, screen),
+
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 3 * ballOffsetFactorX, middleOfScreenY + ballOffsetFactorY), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 3 * ballOffsetFactorX, middleOfScreenY - ballOffsetFactorY), 10, Color.red, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 3 * ballOffsetFactorX, middleOfScreenY + 3 * ballOffsetFactorY), 10, Color.red, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 3 * ballOffsetFactorX, middleOfScreenY - 3 * ballOffsetFactorY), 10, Color.orange, screen),
+
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 4 * ballOffsetFactorX, middleOfScreenY), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 4 * ballOffsetFactorX, middleOfScreenY + 2 * ballOffsetFactorY), 10, Color.red, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 4 * ballOffsetFactorX, middleOfScreenY - 2 * ballOffsetFactorY), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 4 * ballOffsetFactorX, middleOfScreenY + 4 * ballOffsetFactorY), 10, Color.orange, screen),
+      Ball.Ball(pygame.Vector2(middleOfScreenX + ballOffsetX + 4 * ballOffsetFactorX, middleOfScreenY - 4 * ballOffsetFactorY), 10, Color.red, screen),
     ]
 
-    self.balls.append(Ball.PlayerBall(pygame.Vector2(size[0] / 2 - 100, self.size[1] / 2 + self.pos[1]), 10, Color.white, screen))
+    self.balls.append(Ball.PlayerBall(pygame.Vector2(middleOfScreenX - ballOffsetX, middleOfScreenY), 10, Color.white, screen))
 
   def Draw(self):
     pygame.draw.rect(self.screen, Color.brown, ((self.pos[0] - 20, self.pos[1] - 20), (self.size[0] + 40, self.size[1] + 40)))
